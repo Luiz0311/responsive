@@ -39,37 +39,17 @@ O Header é responsável por ser a parte de navegação do site, pode conter
 informações do próprio site como logo, links, contatos etc. Também serve como
 introdução ao site.
 
-```css
-.flex {
-  display: flex;
-}
+Responsividade:
 
-.justify-between {
-  justify-content: space-between;
-}
+1. `Logo|Space|NavItems` if NavItems > Space, then `Logo|Space|NavIcon` (just
+   tailwind sm)
+2. NavIcon button functionality `Logo|Space|NavIcon` if pressed
+   `Logo|Space|NavXIcon{V - Navitems}` opens down Navitems. if NavItems < Space
+   `Logo|Space|NavItems` (useSate and useEffect).
 
-.items-center {
-  align-items: center;
-}
+Ficar no topo:
 
-.h-24 {
-  height: 6rem/* 96px */;
-}
-
-.max-w-\[1240px\] {
-  max-width: 1240px;
-}
-
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.px-4 {
-  padding-left: 1rem/* 16px */;
-  padding-right: 1rem/* 16px */;
-}
-```
+1. just `position: sticky` and `top: 0`.
 
 ### Main
 
