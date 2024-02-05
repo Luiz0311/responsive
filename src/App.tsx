@@ -1,10 +1,14 @@
 import { AlignJustify, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { Section } from './components/section'
+import { sectionData } from './data/sections'
 
 function Main() {
   return (
-    <main>
-      <div className="bg-white w-full h-[300vh]"></div>
+    <main className='max-w-[1240px] mx-auto px-4'>
+      {sectionData.map(section => (
+        <Section title={section.title} content={section.content} />
+      ))}
     </main>
   )
 }
@@ -34,29 +38,29 @@ function Header() {
   }, [])
 
 
-  function isScreenSmall() {
+  function isScreenSmall(): boolean {
     return window.innerWidth < 640
   }
 
   return (
     <header className='w-full sticky top-0 bg-gray-950'>
-      <div className="flex justify-between items-center h-[60px] 
-      max-w-[1240px] mx-auto px-4 text-white sticky top-0">
+      <div className={`flex justify-between items-center h-[60px] 
+      max-w-[1240px] mx-auto px-4 text-white sticky top-0`}>
         <h1 className='w-full text-3xl font-bold text-[#00df9a]'>
           <a href="/">{siteName.toUpperCase()}</a>
         </h1>
         <nav className={`sm:flex ${showMenu
-          ? "flex flex-col fixed right-0 top-20 bg-gray-950 border"
+          ? "flex flex-col fixed right-0 top-[60px] bg-gray-950"
           : "hidden"
           }`
         }>
           {navItens.map(item => (
-            <a href={`${item.toLowerCase()}`} className='p-4'>{item.toUpperCase()}</a>
+            <a href={`${item.toLowerCase()}`} className='p-4 hover:bg-gray-800'>{item.toUpperCase()}</a>
           ))}
         </nav>
         <button onClick={() => setShowMenu(!showMenu)}>
           {showMenu
-            ? <X size={35} className='sm:hidden' />
+            ? <X size={35} className='sm:hidden hover:bg-gray-800 rounded-full' />
             : <AlignJustify size={35} className='sm:hidden z-10' />}
         </button>
       </div>
@@ -68,6 +72,10 @@ function App() {
   return (
     <>
       <Header />
+
+      {/* Separator */}
+      <div className="p-6"></div>
+
       <Main />
     </>
   )
