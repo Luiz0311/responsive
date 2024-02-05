@@ -1,15 +1,10 @@
-type SectionProps = {
-  title: string
-  content: string[]
-}
+import { Children } from "react"
 
-export function Section({ title = "Undefined", content }: SectionProps) {
+export function Section({ children }: any) {
+
   return (
-    <section className="bg-white w-full h-auto">
-      <h1 className='text-3xl font-bold border-b-2 border-gray-950'>{title}</h1>
-      {content.map(paragraph => (
-        <p className="py-3">{paragraph}</p>
-      ))}
+    <section className="flex flex-col items-center">
+      {Children.map(children, child => <>{child}</>)}
     </section>
   )
 }
